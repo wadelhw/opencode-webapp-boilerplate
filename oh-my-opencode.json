@@ -1,0 +1,184 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "agents": {
+    "sisyphus": {
+      "model": "zhipuai-coding-plan/glm-5",
+      "temperature": 0.1,
+      "fallback_models": [
+        "bailian-coding-plan/qwen3-coder-plus",
+        "bailian-coding-plan/qwen3-coder-next"
+      ]
+    },
+    "oracle": {
+      "model": "github-copilot/gpt-5.2",
+      "temperature": 0.08,
+      "maxTokens": 9000,
+      "fallback_models": [
+        "zhipuai-coding-plan/glm-5",
+        "bailian-coding-plan/qwen3-max-2026-01-23"
+      ]
+    },
+    "prometheus": {
+      "model": "zhipuai-coding-plan/glm-5",
+      "temperature": 0.12,
+      "fallback_models": [
+        "bailian-coding-plan/qwen3-coder-plus"
+      ],
+      "prompt_append": "Prioritize robust planning and verification; decompose complex tasks and validate assumptions before execution."
+    },
+    "metis": {
+      "model": "zhipuai-coding-plan/glm-5",
+      "temperature": 0.15,
+      "fallback_models": [
+        "bailian-coding-plan/qwen3-max-2026-01-23",
+        "bailian-coding-plan/qwen3-coder-next"
+      ],
+      "prompt_append": "You are a meticulous plan consultant. Identify hidden intentions, ambiguities, missing acceptance criteria, AI-slop patterns, and edge cases. Provide structured gap analysis with actionable recommendations."
+    },
+    "librarian": {
+      "model": "bailian-coding-plan/qwen3.5-plus",
+      "temperature": 0.1
+    },
+    "explore": {
+      "model": "bailian-coding-plan/kimi-k2.5",
+      "temperature": 0.3
+    },
+    "atlas": {
+      "model": "bailian-coding-plan/qwen3-max-2026-01-23",
+      "temperature": 0.12,
+      "fallback_models": [
+        "bailian-coding-plan/qwen3-coder-plus"
+      ]
+    },
+    "momus": {
+      "model": "github-copilot/gpt-5.2",
+      "temperature": 0.1,
+      "maxTokens": 8000,
+      "fallback_models": [
+        "zhipuai-coding-plan/glm-5",
+        "bailian-coding-plan/qwen3-max-2026-01-23"
+      ],
+      "prompt_append": "You are a code review and quality assurance expert. Critically analyze code for correctness, security, performance, maintainability, and style. Provide specific actionable feedback."
+    },
+    "multimodal-looker": {
+      "model": "zhipuai-coding-plan/glm-4.6v",
+      "temperature": 0.15
+    }
+  },
+  "categories": {
+    "quick": {
+      "model": "bailian-coding-plan/qwen3.5-plus",
+      "fallback_models": [
+        "bailian-coding-plan/kimi-k2.5"
+      ]
+    },
+    "unspecified-low": {
+      "model": "bailian-coding-plan/qwen3-coder-next",
+      "fallback_models": [
+        "bailian-coding-plan/qwen3.5-plus"
+      ]
+    },
+    "unspecified-high": {
+      "model": "zhipuai-coding-plan/glm-5",
+      "fallback_models": [
+        "bailian-coding-plan/qwen3-coder-plus"
+      ]
+    },
+    "deep": {
+      "model": "github-copilot/gpt-5.2-codex",
+      "fallback_models": [
+        "zhipuai-coding-plan/glm-5",
+        "bailian-coding-plan/qwen3-max-2026-01-23"
+      ]
+    },
+    "writing": {
+      "model": "zhipuai-coding-plan/glm-5",
+      "textVerbosity": "high",
+      "fallback_models": [
+        "bailian-coding-plan/qwen3.5-plus"
+      ]
+    },
+    "visual-engineering": {
+      "model": "github-copilot/gemini-3-pro-preview",
+      "fallback_models": [
+        "zhipuai-coding-plan/glm-4.6v"
+      ]
+    },
+    "artistry": {
+      "model": "github-copilot/gemini-3-pro-preview",
+      "fallback_models": [
+        "zhipuai-coding-plan/glm-4.6v"
+      ]
+    },
+    "ultrabrain": {
+      "model": "github-copilot/gpt-5.2-codex",
+      "fallback_models": [
+        "github-copilot/gpt-5.1-codex-max",
+        "zhipuai-coding-plan/glm-5"
+      ]
+    }
+  },
+  "browser_automation_engine": {
+    "provider": "agent-browser"
+  },
+  "tmux": {
+    "enabled": true,
+    "layout": "main-vertical",
+    "main_pane_size": 60,
+    "main_pane_min_width": 120,
+    "agent_pane_min_width": 40
+  },
+  "sisyphus_agent": {
+    "disabled": false,
+    "default_builder_enabled": false,
+    "planner_enabled": true,
+    "replace_plan": true
+  },
+  "background_task": {
+    "defaultConcurrency": 4,
+    "staleTimeoutMs": 180000,
+    "providerConcurrency": {
+      "github-copilot": 1,
+      "zhipuai-coding-plan": 3,
+      "bailian-coding-plan": 3
+    },
+    "modelConcurrency": {
+      "github-copilot/gpt-5.2": 1,
+      "github-copilot/gpt-5.2-codex": 1,
+      "zhipuai-coding-plan/glm-5": 3,
+      "bailian-coding-plan/qwen3-coder-plus": 3
+    }
+  },
+  "runtime_fallback": {
+    "enabled": true,
+    "retry_on_errors": [400, 429, 503],
+    "max_fallback_attempts": 3,
+    "cooldown_seconds": 45,
+    "timeout_seconds": 75,
+    "notify_on_fallback": true
+  },
+  "tools": {
+    "bash": {
+      "timeout": 300000
+    }
+  },
+  "hashline_edit": true,
+  "git_master": {
+    "commit_footer": true,
+    "include_co_authored_by": true
+  },
+  "experimental": {
+    "aggressive_truncation": true,
+    "truncate_all_tool_outputs": true,
+    "dynamic_context_pruning": {
+      "enabled": true,
+      "notification": "minimal",
+      "turn_protection": { "enabled": true, "turns": 2 },
+      "strategies": {
+        "deduplication": { "enabled": true },
+        "supersede_writes": { "enabled": true, "aggressive": true },
+        "purge_errors": { "enabled": true, "turns": 2 }
+      }
+    }
+  }
+}
