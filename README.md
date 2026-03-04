@@ -20,15 +20,7 @@ rm -rf .git
 git init
 ```
 
-### 2. 安装 opencode
-
-```bash
-npm install -g @anthropics/claude-code
-# 或
-bun install -g @anthropics/claude-code
-```
-
-### 3. 连接 AI 服务
+### 2. 连接 AI 服务
 
 ```bash
 opencode
@@ -36,7 +28,7 @@ opencode
 # 选择你的 AI 服务提供商并配置 API Key
 ```
 
-### 4. 让 AI 读取项目需求
+### 3. 让 AI 读取项目需求
 
 在 opencode TUI 中，让 AI 读取 README：
 
@@ -50,7 +42,7 @@ AI 会：
 - 配置合适的 MCP 服务器
 - 设置项目特定的开发规范
 
-### 5. 重启 opencode
+### 4. 重启 opencode
 
 退出并重新启动 opencode，让新配置生效：
 
@@ -59,7 +51,7 @@ AI 会：
 opencode  # 重新启动
 ```
 
-### 6. 开始开发
+### 5. 开始开发
 
 现在可以开始正式开发了：
 
@@ -75,15 +67,14 @@ opencode  # 重新启动
 │                    完整开发流程                              │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  1. Clone     ──►  2. Install    ──►  3. Connect           │
-│  获取脚手架        安装 opencode       配置 AI 服务          │
+│  1. Clone     ──►  2. Connect    ──►  3. Configure        │
+│  获取脚手架        配置 AI 服务       AI 读取需求           │
 │                                                             │
 │       │                                                    │
 │       ▼                                                    │
 │                                                             │
-│  4. 配置项目   ──►  5. Restart    ──►  6. Develop          │
-│  AI 读取需求       重启生效            开始开发              │
-│  生成定制配置                                            │
+│  4. Restart   ──►  5. Develop                              │
+│  重启生效            开始开发                               │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
